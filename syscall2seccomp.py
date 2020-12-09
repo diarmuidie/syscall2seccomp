@@ -68,7 +68,7 @@ def to_profile(syscalls):
 
     # calls are in one block
     newsyscall = _syscall_template()
-    newsyscall["names"] = list(syscalls)
+    newsyscall["names"] = sorted(syscalls)
     template["syscalls"].append(newsyscall)
 
     print(json.dumps(template, indent=4))
