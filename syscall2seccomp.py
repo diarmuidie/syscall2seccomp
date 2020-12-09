@@ -37,10 +37,10 @@ def main():
             for x in f:
                 x=x.strip()
                 if x:
-                    app_syscalls.update(x.replace('>','<').split(' < ', 1)[1].split(' ')[0])
-        else: 
-            app_syscalls.update((x.split('(', 1)[0] for x in f if x[0].isalpha()))
-    
+                    app_syscalls.update([x.replace('>','<').split(' < ', 1)[1].split(' ')[0]])
+        else:
+            app_syscalls.update(list(x.split('(', 1)[0] for x in f if x[0].isalpha()))
+
     app_syscalls.intersection_update(syscalls.SYSCALLS) # validate syscalls actually exist
     to_profile(app_syscalls)
 
